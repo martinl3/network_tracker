@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Interaction #<%= @interaction.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Connection</dt>
+      <dd><%= @interaction.connection_id %></dd>
+
+      <dt>User</dt>
+      <dd><%= @interaction.user_id %></dd>
+
+      <dt>Notes</dt>
+      <dd><%= @interaction.notes %></dd>
+
+      <dt>Date</dt>
+      <dd><%= @interaction.date %></dd>
+
+      <dt>Event</dt>
+      <dd><%= @interaction.event %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/interactions" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/interactions/<%= @interaction.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_interaction/<%= @interaction.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<!-- Validation failure messages -->
+<% if @interaction.errors.any? %>
+  <% @interaction.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Interaction #<%= @interaction.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_interaction/<%= @interaction.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for connection_id -->
+      <div class="form-group">
+        <label for="connection_id" class="control-label">
+          Connection
+        </label>
+
+        <input type="text" id="connection_id" name="connection_id" placeholder="Connection" class="form-control" value="<%= @interaction.connection_id %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @interaction.user_id %>">
+      </div>
+
+      <!-- Label and input for notes -->
+      <div class="form-group">
+        <label for="notes" class="control-label">
+          Notes
+        </label>
+
+        <input type="text" id="notes" name="notes" placeholder="Notes" class="form-control" value="<%= @interaction.notes %>">
+      </div>
+
+      <!-- Label and input for date -->
+      <div class="form-group">
+        <label for="date" class="control-label">
+          Date
+        </label>
+
+        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @interaction.date %>">
+      </div>
+
+      <!-- Label and input for event -->
+      <div class="form-group">
+        <label for="event" class="control-label">
+          Event
+        </label>
+
+        <input type="text" id="event" name="event" placeholder="Event" class="form-control" value="<%= @interaction.event %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Interaction
+      </button>
+      or
+      <a href="/interactions/<%= @interaction.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
