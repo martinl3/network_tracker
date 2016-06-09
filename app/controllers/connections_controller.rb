@@ -1,6 +1,6 @@
 class ConnectionsController < ApplicationController
   def index
-    @connections = Connection.all
+    @connections = current_user.connections
   end
 
   def show

@@ -1,31 +1,23 @@
 <div class="page-header">
-  <h3>Connection #<%= @connection.id %></h3>
-</div>
 
-<div class="row">
-  <div class="col-md-12">
-    <dl class="dl-horizontal">
-      <dt>Company</dt>
-      <dd><%= @connection.company %></dd>
 
-      <dt>Name</dt>
-      <dd><%= @connection.name %></dd>
 
-      <dt>User</dt>
-      <dd><%= @connection.user_id %></dd>
-
-    </dl>
-
-    <div class="btn-group btn-group-justified">
-      <a href="/connections" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/connections/<%= @connection.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_connection/<%= @connection.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
-    </div>
+  <h3><%= @connection.name %></h3>
+  <h5><%= @connection.company %></h5>
+  <div class="btn-group">
+    <a href="/connections" class="btn btn-default">
+      Back
+    </a>
+    <a href="/connections/<%= @connection.id %>/edit" class="btn btn-default">
+      Edit
+    </a>
+    <a href="/delete_connection/<%= @connection.id %>" class="btn btn-default" rel="nofollow">
+      Delete
+    </a>
   </div>
 </div>
+
+
+<% @connection.interactions.each do |interaction| %>
+  <%= interaction.event %>
+<% end %>

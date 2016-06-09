@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  devise_for :users
+  root "connections#index"
   # Routes for the Interaction resource:
   # CREATE
   get "/interactions/new", :controller => "interactions", :action => "new"
