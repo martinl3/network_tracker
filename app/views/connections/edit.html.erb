@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Connection #<%= @connection.id %></h3>
+  <h3>Edit <%= @connection.name %>'s Profile</h3>
 </div>
 
 <div class="row">
@@ -36,20 +36,15 @@
         <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @connection.name %>">
       </div>
 
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
+      <!-- Hidden input for user_id -->
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @connection.user_id %>">
-      </div>
+      <input type="hidden" name="user_id" value="<%=current_user.id %>">
 
       <button class="btn btn-warning">
         Update Connection
       </button>
       or
-      <a href="/connections/<%= @connection.id %>">Cancel</a>
+      <a href="/connections">Cancel</a>
     </form>
   </div>
 </div>

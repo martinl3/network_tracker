@@ -24,17 +24,12 @@
           Connection
         </label>
 
-        <input type="text" id="connection_id" name="connection_id" placeholder="Connection" class="form-control" value="<%= @interaction.connection_id %>">
+        <%= select_tag(:connection_id, options_from_collection_for_select(Connection.all, :id, :name, @interaction.connection_id), :class => "form-control")%>
+
       </div>
 
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @interaction.user_id %>">
-      </div>
+      <!-- Hidden input for user_id -->
+      <input type="hidden" name="user_id" value="<%=current_user.id %>">
 
       <!-- Label and input for notes -->
       <div class="form-group">
@@ -73,7 +68,7 @@
         Create Interaction
       </button>
       or
-      <a href="/interactions">Cancel</a>
+      <a href="/connections">Cancel</a>
     </form>
   </div>
 </div>

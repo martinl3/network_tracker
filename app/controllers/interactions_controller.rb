@@ -19,8 +19,10 @@ class InteractionsController < ApplicationController
     @interaction.date = Chronic.parse(params[:date])
     @interaction.event = params[:event]
 
+     a = @interaction.connection_id
+
     if @interaction.save
-      redirect_to "/interactions", :notice => "Interaction created successfully."
+      redirect_to ("/connections/" + a), :notice => "Interaction created successfully."
     else
       render 'new'
     end
@@ -39,8 +41,10 @@ class InteractionsController < ApplicationController
     @interaction.date = params[:date]
     @interaction.event = params[:event]
 
+    a = @interaction.connection_id
+
     if @interaction.save
-      redirect_to "/interactions", :notice => "Interaction updated successfully."
+      redirect_to ("/connections/" + a), :notice => "Interaction updated successfully."
     else
       render 'edit'
     end
@@ -51,6 +55,7 @@ class InteractionsController < ApplicationController
 
     @interaction.destroy
 
-    redirect_to "/interactions", :notice => "Interaction deleted."
+    a = @interaction.connection_id
+    redirect_to ("/connections/" + a), :notice => "Interaction deleted."
   end
 end

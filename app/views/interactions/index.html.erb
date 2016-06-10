@@ -19,7 +19,11 @@
 
       <% @interactions.each do |interaction| %>
       <tr>
-        <td><%= interaction.connection_id %></td>
+        <td>
+          <a href="/connections/<%= interaction.connection_id %>">
+            <%= Connection.find_by(:id => interaction.connection_id).name %>
+          </a>
+        </td>
         <td><%= interaction.user_id %></td>
         <td><%= interaction.notes %></td>
         <td><%= interaction.date %></td>

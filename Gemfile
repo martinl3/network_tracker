@@ -6,10 +6,8 @@ gem "faker"
 
 gem "devise"
 
-gem "chronic"
-
-gem "momentjs-rails", ">= 2.9.8"
-gem "bootstrap3-datetimepicker-rails", "~> 4.7.14"
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

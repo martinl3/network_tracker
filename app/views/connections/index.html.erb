@@ -6,27 +6,36 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped table-hover">
-      <tr>
-        <th>Company</th>
-        <th>Name</th>
-        <th>User</th>
-        <th>Actions</th>
-      </tr>
+  <% @connections.each do |connection| %>
 
-      <% @connections.each do |connection| %>
-      <tr>
-        <td><%= connection.company %></td>
-        <td><%= connection.name %></td>
-        <td><%= connection.user_id %></td>
-        <td>
-          <a href="/connections/<%= connection.id %>" class="btn btn-primary">Show</a>
-          <a href="/connections/<%= connection.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_connection/<%= connection.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title">
+              <%= connection.name %>
+          </h2>
+          <p>
+            <%= connection.company %>
+          </p>
+
+        </div>
+        <div class="panel-body">
+          <li>
+            <p>Number of Interactions: <%= Interaction.where(:connection_id => connection.id).count %></p>
+
+            <p>Date of Last Interaction: <%= Interaction.where(:connection_id => connection.id).maximum(:date) %></p>
+          </li>
+        </div>
+        <div class="panel-footer">
+          <td>
+            <a href="/connections/<%= connection.id %>" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>
+            <a href="/connections/<%= connection.id %>/edit" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            <a href="/delete_connection/<%= connection.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            <a href="/interactions/new" class="btn btn-default">Add Interaction</a>
+          </td>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
 </div>

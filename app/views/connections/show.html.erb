@@ -2,22 +2,46 @@
 
 
 
-  <h3><%= @connection.name %></h3>
+  <h3>Interactions with <%= @connection.name %> <a href="/interactions/new" class="btn btn-lg btn-success">New Interaction</a></h3>
   <h5><%= @connection.company %></h5>
   <div class="btn-group">
     <a href="/connections" class="btn btn-default">
-      Back
+      Home
     </a>
     <a href="/connections/<%= @connection.id %>/edit" class="btn btn-default">
-      Edit
+      Edit Connection
     </a>
     <a href="/delete_connection/<%= @connection.id %>" class="btn btn-default" rel="nofollow">
-      Delete
+      Delete Connection
     </a>
   </div>
 </div>
 
+<div class="row">
+  <% @connection.interactions.each do |interaction| %>
 
-<% @connection.interactions.each do |interaction| %>
-  <%= interaction.event %>
-<% end %>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title">
+            <%= interaction.event %>
+          </h2>
+          <p>
+            <%= interaction.date %>
+          </p>
+
+        </div>
+        <div class="panel-body">
+          <p class="panel-body">
+            <%= interaction.notes %>
+          </p>
+        </div>
+        <div class="panel-footer">
+          <a href="/interactions/<%= interaction.id %>/edit" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+          <a href="/delete_interaction/<%= interaction.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>
