@@ -2,7 +2,7 @@
 
 
 
-  <h3>Interactions with <%= @connection.name %> <a href="/interactions/new" class="btn btn-lg btn-success">New Interaction</a></h3>
+  <h3>Interactions with <%= @connection.name %></h3>
   <h5><%= @connection.company %></h5>
   <div class="btn-group">
     <a href="/connections" class="btn btn-default">
@@ -44,4 +44,63 @@
     </div>
 
   <% end %>
+
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          New Interaction
+        </h3>
+      </div>
+      <div class="panel-body">
+        <form action="/create_interaction" method="post">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Hidden input for connection_id -->
+          <input type="hidden" id="connection_id" name="connection_id" placeholder="Connection" class="form-control" value="<%= @connection.id %>">
+
+          <!-- Hidden input for user_id -->
+          <input type="hidden" name="user_id" value="<%=current_user.id %>">
+
+          <!-- Label and input for event -->
+          <div class="form-group">
+            <label for="event" class="control-label">
+              Event
+            </label>
+
+            <input type="text" id="event" name="event" placeholder="Event" class="form-control" >
+          </div>
+
+          <!-- Label and input for notes -->
+          <div class="form-group">
+            <label for="notes" class="control-label">
+              Notes
+            </label>
+
+            <input type="text" id="notes" name="notes" placeholder="Notes" class="form-control" >
+          </div>
+
+          <!-- Label and input for date -->
+          <div class="form-group">
+            <label for="date" class="control-label">
+              Date
+            </label>
+
+            <input type='date' id="date" name="date" placeholder="Date" class="form-control">
+          </div>
+
+
+          <button class="btn btn-success">
+            Create Interaction
+          </button>
+          or
+          <a href="/connections">Cancel</a>
+        </form>
+      </div>
+      <div class="panel-footer">
+
+      </div>
+    </div>
+  </div>
 </div>

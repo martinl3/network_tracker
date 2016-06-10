@@ -19,7 +19,7 @@ class InteractionsController < ApplicationController
     @interaction.date = Chronic.parse(params[:date])
     @interaction.event = params[:event]
 
-     a = @interaction.connection_id
+    a = @interaction.connection_id
 
     if @interaction.save
       redirect_to ("/connections/" + a), :notice => "Interaction created successfully."
@@ -38,7 +38,7 @@ class InteractionsController < ApplicationController
     @interaction.connection_id = params[:connection_id]
     @interaction.user_id = params[:user_id]
     @interaction.notes = params[:notes]
-    @interaction.date = params[:date]
+    @interaction.date = Chronic.parse(params[:date])
     @interaction.event = params[:event]
 
     a = @interaction.connection_id

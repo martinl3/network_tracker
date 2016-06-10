@@ -46,12 +46,7 @@
           Date
         </label>
 
-        <div class='input-group date' id='datetimepicker1'>
-          <input type='text' class="form-control" name="date" id="date" value="<%= @interaction.date %>">
-          <span class="input-group-addon">
-            <span class="glyphicon glyphicon-calendar"></span>
-          </span>
-        </div>
+        <input type='date' id="date" name="date" placeholder="Date" class="form-control" value="<%= @interaction.date %>">
       </div>
 
 
@@ -72,9 +67,3 @@
     </form>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(function () {
-    $('#datetimepicker1').datetimepicker();
-  });
-</script>
